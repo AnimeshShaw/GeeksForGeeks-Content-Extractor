@@ -2,14 +2,14 @@ from G4GExtractor import G4GExtractor
 
 d = G4GExtractor()
 #You can set the path by calling a method or passing the path as constructor
-d.set_filesave_path('/root/PycharmProjects/GeekForGeeks-Spider/')
+d.set_filesave_path("/root/PycharmProjects/GeekForGeeks-Spider/")
 
 #You can set the base url path for tag or category. Here we show an example with tag.
 #Of Course tags much match the tags of the site else you will receive error.
-d.set_baseweburl_path('http://www.geeksforgeeks.org/tag/')
+d.set_baseweburl_path("http://www.geeksforgeeks.org/tag/")
 
 #Set the tag list
-tag_list = ['recursion','geometric-algorithms']
+tag_list = ["pattern-searching"]
 
 #call this function to save the files and if yoy send a second parameter as True
 # then files will be saved as pdf.
