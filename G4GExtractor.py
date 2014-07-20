@@ -47,13 +47,9 @@ class G4GExtractor:
         :param path: path to set
         :raise Exception: When the path is invalid or write permission error.
         """
-        if self.__valid_webpage(url):
-            self.__BASE_WEB_URL = url
-        else:
-            raise Exception("WebPage is not found. Please check the link and try again!")
+        self.__BASE_WEB_URL = url
 
-    @staticmethod
-    def __valid_webpage(urllink):
+    def __valid_webpage(self,urllink):
 
         """
         Checks is a link is valid or not. returns true is Status is 200
@@ -67,8 +63,7 @@ class G4GExtractor:
         resp = h.request(urllink, 'HEAD')
         return int(resp[0]['status']) == 200
 
-    @staticmethod
-    def __remove_non_ascii(text):
+    def __remove_non_ascii(self,text):
         """
         Remove unicode or ascii chars from html source
 
@@ -111,7 +106,10 @@ class G4GExtractor:
 
                 #Get number of Pagination pages for each category
                 pages = soup.find('span', {"class": "pages"})
-                cat_content_pages = int(str(pages.text).split()[3])
+                if pages:
+                    cat_content_pages = int(str(pages.text).split()[3])
+                else:
+                    cat_content_pages = 1
 
                 for i in range(1, cat_content_pages + 1):
 
@@ -182,8 +180,8 @@ class G4GExtractor:
             except OSError as e:
                 print(e.message)
 
-    @staticmethod
-    def convertHtmlToPdf(sourceHtml, outputFilename):
+    
+    def convertHtmlToPdf(self,sourceHtml, outputFilename):
         """
          Open output file for writing (truncated binary) and
          converts HTML code into pdf file format
@@ -209,10 +207,10 @@ def demo():
     A demo run if this app.
 
     """
-    demo_cat_list = ['c-puzzles','c-arrays']
+    demo_cat_list = ['bit-magic']
     path = '/root/PycharmProjects/GeekForGeeks-Spider/'
     demo = G4GExtractor(path)
-    totallinks = demo.extract_content_and_save(demo_cat_list)
+    totallinks = len(demo.extract_content_and_save(demo_cat_list, True))
     print("Number of links crawled and saved is %d" % totallinks)
 
 if __name__ == '__main__':
