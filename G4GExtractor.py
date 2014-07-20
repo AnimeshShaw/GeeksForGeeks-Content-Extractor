@@ -209,7 +209,6 @@ class G4GExtractor:
 def demo():
     """
     A demo run if this app.
-
     """
     demo_cat_list = ['c-puzzles','c-arrays']
     path = '/root/PycharmProjects/GeekForGeeks-Spider/'
