@@ -39,7 +39,7 @@ class G4GExtractor:
                             "have write permissions. \n Check the directory write "
                             "permissions and try again later. Thank You")
 
-    def set_baseweburl_path(self, path):
+    def set_baseweburl_path(self, url):
         """
         Sets the base url path path which enables you to choose category
         download or download based on tags
@@ -47,8 +47,8 @@ class G4GExtractor:
         :param path: path to set
         :raise Exception: When the path is invalid or write permission error.
         """
-        if os.path.exists(path) and os.access(path, os.W_OK):
-            self.__BASE_WEB_URL = path
+        if self.__valid_webpage(url):
+            self.__BASE_WEB_URL = url
         else:
             raise Exception("Either the supplied path doesn't exists or you don't "
                             "have write permissions. \n Check the directory write "
@@ -209,6 +209,7 @@ class G4GExtractor:
 def demo():
     """
     A demo run if this app.
+
     """
     demo_cat_list = ['c-puzzles','c-arrays']
     path = '/root/PycharmProjects/GeekForGeeks-Spider/'
