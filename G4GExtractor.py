@@ -50,9 +50,7 @@ class G4GExtractor:
         if self.__valid_webpage(url):
             self.__BASE_WEB_URL = url
         else:
-            raise Exception("Either the supplied path doesn't exists or you don't "
-                            "have write permissions. \n Check the directory write "
-                            "permissions and try again later. Thank You")
+            raise Exception("WebPage is not found. Please check the link and try again!")
 
     @staticmethod
     def __valid_webpage(urllink):
