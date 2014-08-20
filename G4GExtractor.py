@@ -201,7 +201,7 @@ class G4GExtractor:
         # return True on success and False on errors
         return pisaStatus.err
 
-
+'''
 def demo():
     """
     A demo run if this app.
@@ -215,3 +215,4 @@ def demo():
 
 if __name__ == '__main__':
     demo()
+'''
